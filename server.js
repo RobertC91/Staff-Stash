@@ -67,7 +67,7 @@ const questions = () => {
       // Switch allows different functions depending on which option is chosen
       switch (response.menu) {
         case "View All Departments":
-          viewDepartment()
+          viewDepartment();
           break;
         case "View All Roles":
           viewRoles();
@@ -108,17 +108,20 @@ const viewDepartment = () => {
 
 // Query role table
 const viewRoles = () => {
-  db.query(`SELECT role.*, department.name
+  db.query(
+    `SELECT role.*, department.name
   AS department
   FROM role
   LEFT JOIN department
-  ON role.department_id = department.id`, (err, result) => {
-    if (err) {
-      console.log(err);
+  ON role.department_id = department.id`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(result);
+      questions();
     }
-    console.log(result);
-    questions();
-  });
+  );
 };
 
 // Query employee table
@@ -244,7 +247,7 @@ const addEmployee = () => {
         {
           type: "input",
           name: "manager",
-          message: "Who is the employees manager?"
+          message: "Who is the employees manager?",
         },
       ])
       .then((response) => {
@@ -267,8 +270,8 @@ const addEmployee = () => {
           }
         );
       });
-    })
-  }
+  });
+};
 
 // Update an Employee
 updateEmployeeRole = () => {
