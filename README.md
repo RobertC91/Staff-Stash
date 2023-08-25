@@ -1,4 +1,4 @@
-# SVG-Generator
+# Staff Stash
 
 ## License
 
